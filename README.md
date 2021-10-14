@@ -36,13 +36,13 @@ Pour avoir un aperçu de toutes les fonctionnalités disponibles, consultez notr
 
 **Sample teacher login**
 
-Username:- teacher1
-Password:- teacher1
+Username: teacher
+Password: teacher
 
 **Sample student login**
 
-Username:- student1
-Password:- student1
+Username: student
+Password: student
 
 Requirements
 ============
