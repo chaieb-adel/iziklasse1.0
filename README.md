@@ -13,3 +13,4 @@ Modification apporté & ajouts effectué
 - Corréctions des bugs dans le module de cours
 - Et plein d'autres améliorations à rétrouver sur http://iziklasse.net
 Plus d'info sur la version de base https://github.com/chaieb-adel/iziKlasse
+consulter la documentation https://github.com/chaieb-adel/iziklasse1.0/tree/master/yaksh/documentation
