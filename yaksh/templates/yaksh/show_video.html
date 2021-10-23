@@ -195,7 +195,7 @@
                     </div>
                     {% endif %}
                 {% endif %}
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <form action="{% url 'stats:add_tracker' track_id %}" method="POST" id="track-form">
                         {% csrf_token %}
                         <input type="hidden" name="video_duration" id="video_duration">

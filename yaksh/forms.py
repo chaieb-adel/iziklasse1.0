@@ -258,7 +258,7 @@ class QuizForm(forms.ModelForm):
             {'class': form_input_class}
         )
 
-        self.fields["instructions"].initial = dedent(_("""\
+        self.fields["instructions"].initial = dedent(("""\
             <p>
             This examination system has been developed with the intention of
             making you learn programming and be assessed in an interactive and

@@ -65,7 +65,8 @@ from notifications_plugin.models import Notification
 import hashlib
 from django.utils.translation import gettext as _
 
-
+    
+    
 def my_redirect(url):
     """An overridden redirect to deal with URL_ROOT-ing. See settings.py
     for details."""

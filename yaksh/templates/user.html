@@ -5,6 +5,7 @@
 {% block nav %}
 <div class="container-fluid">
     <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+        
         <a class="navbar-brand" href="{% url 'yaksh:index' %}">
         <img src="{% static 'yaksh/images/yaksh_banner.png' %}" alt="YAKSH">
         </a>
@@ -15,12 +16,13 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="{% url 'yaksh:index' %}"><i class="fa fa-home" style="size: 18px"></i>&nbsp;{% trans 'Home' %}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'forum:index' %}"><i class="fa fa-commenting" style="size: 18px"></i>&nbsp;{% trans 'Forum' %}</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <form class="form-select form-select-lg mb-3 text-primary" action="{% url 'yaksh:set_language' %}" method="post">{% csrf_token %}
+                <form class="form-select form-select-lg mb-3 text-primary form-inline" action="{% url 'yaksh:set_language' %}" method="post">{% csrf_token %}
                     <input name="next" type="hidden" value="{{ redirect_to }}">
-                    <select name="language">
+                    <select name="language" class="form-control">
                         {% get_available_languages as LANGUAGES %}
                         {% get_language_info_list for LANGUAGES as languages %}
                         {% for language in languages %}
@@ -29,7 +31,7 @@
                             </option>
                         {% endfor %}
                     </select>
-                    <input type="submit" value="Go">
+                    <input type="submit" class="btn btn-info" value="Go">
                 </form>
             </li>
             <li class="nav-item">

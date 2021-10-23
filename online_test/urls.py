@@ -10,7 +10,7 @@ urlpatterns = [
     # Examples:
     # url(r'^$', 'online_test.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    #url(r'^rquiz/',include('rquiz.urls')),
     url(r'^forum/', include(machina_urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),

@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -16,9 +17,12 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
   <link rel="stylesheet" href="{% static 'yaksh/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'yaksh/css/custom.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'rquiz/rquiz.css' %}" type="text/css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/tomorrow-night.min.css"/>
+  
   <link rel="stylesheet" href="{% static 'yaksh/css/animate.min.css' %}" type="text/css" />
   <link rel="stylesheet" href="{% static 'yaksh/css/font-awesome.css' %}" type="text/css" />
   <link rel="stylesheet" href="{% static 'yaksh/css/ontop.css' %}" type="text/css" />
@@ -41,7 +45,7 @@
   {% endblock %}
 
  
-
+  
   <script language="JavaScript" type="text/javascript" src="{% static 'yaksh/js/popper.min.js' %}"></script>
   <script language="JavaScript" type="text/javascript" src="{% static 'yaksh/js/jquery-3.3.1.min.js' %}"></script>
   <script language="JavaScript" type="text/javascript" src="{% static 'yaksh/js/bootstrap.min.js' %}"></script>
@@ -109,13 +113,15 @@
   
   {% block nav %}
   {% endblock %}
-    <div class="base-content">
+    <div class="base-content" id="google_translate_element">
        <div class="header">
            <h3><center>{% block pagetitle %}{% endblock pagetitle %}</center></h3>
        </div>
        <h4><center>{% block subtitle %}{% endblock %}</center></h4>
+       
        {% block content %}
        {% endblock %}
+        
        <br>
     </div>
     <footer class="footer">
@@ -123,13 +129,22 @@
         <div class="row">
           <div class="col">
             {% trans 'Developed by ' %} <a href="http://www.dev4edu.com" target="_blank">Dev4Edu</a>
+            {% trans 'from the basic project maintained by' %} <a href="https://fossee.in" target="_blank">FOSSEE</a>
           </div>
           <div class="col">
             {% trans 'Contact: contact@izieval.net' %}
           </div>
         </div>
+        
       </div>
     </footer>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script src="{% static 'rquiz/rquiz.js' %}"></script>
+    <script>
+        hljs.highlightAll();
+        
+	}
+    </script> 
 </body>
 </html>
 

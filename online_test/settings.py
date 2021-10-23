@@ -29,10 +29,13 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "yaksh_data", "output")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY', default='dUmMy_s3cR3t_k3y')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#rediretcion
+SECURE_SSL_REDIRECT = False
 
-ALLOWED_HOSTS = ['iziklasse.net','127.0.0.1']
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['iziklasse.net','www.iziklasse.net']
 
 # This is a required field
 DOMAIN_HOST = "http://127.0.0.1:8000"
@@ -42,6 +45,7 @@ URL_ROOT = ''
 # Application definition
 
 INSTALLED_APPS = (
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,11 +81,14 @@ INSTALLED_APPS = (
     'machina.apps.forum_search',
     'machina.apps.forum_tracking',
     'machina.apps.forum_member',
-    'machina.apps.forum_permission'
+    'machina.apps.forum_permission',
+    'highlightjs',
+    'rquiz'
 )
 
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -93,7 +100,8 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware'
+    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
+    'django.middleware.security.SecurityMiddleware'
 )
 
 ROOT_URLCONF = 'online_test.urls'
@@ -103,20 +111,30 @@ WSGI_APPLICATION = 'online_test.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.{0}'.format(
-            config('mysql', default='mysql')
+            config('mysql', default='sqlite3')
         ),
-        'NAME': 'izieval',#config('izieval',
-                       #default=os.path.join(BASE_DIR, 'izieval')
-                       #),
+        'NAME': config('fwpa6521_iziklasse2',
+                       default=os.path.join(BASE_DIR, 'db.sqlite3')
+                       ),
         # The following settings are not used with sqlite3:
-        'USER': config('izieval', default='izieval'),
-        'PASSWORD': config('Password123#@!', default='Password123#@!'),
+        'USER': config('fwpa6521_iziklasse2', default='fwpa6521_iziklasse2'),
+        'PASSWORD': config('6rJkNTiG5f6p4JF', default='6rJkNTiG5f6p4JF'),
         # Empty for localhost through domain sockets or '1$
-        'HOST': config('127.0.0.1', default='127.0.0.1'),
+        'HOST': config('DB_HOST', default='localhost'),
         'PORT': config('DB_PORT', default=''),
+    },
+}"""
+DATABASES = {
+    'default': {
+        'ENGINE':'django.db.backends.mysql',
+        'NAME':'fwpa6521_iziklasse2',
+        'USER':'fwpa6521_iziklasse2',
+        'PASSWORD':'6rJkNTiG5f6p4JF',
+        'HOST':'localhost',
+        'PORT':'3306'
     },
 }
 
@@ -128,13 +146,44 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'online_test/locale'),  # base folder where manage.py resides
     os.path.join(BASE_DIR, 'grades/locale'),  # app folder
     os.path.join(BASE_DIR, 'yaksh/locale'),
-    os.path.join(BASE_DIR, 'locale'),
+    #os.path.join(BASE_DIR, 'locale'),
     os.path.join(BASE_DIR, 'stats/locale')
 ]
 
 LANGUAGES = [
    ('en', _('English')),
    ('fr', _('French')),
+   ('es',_('Spanish')),
+   ('pt',_('Spanish')),
+   ('de',_('Spanish')),
+   ('ko',_('Spanish')),
+   ('hu',_('Spanish')),
+   ('pl',_('Spanish')),
+   #('wo',_('Spanish')),
+   ('ca',_('Spanish')),
+   ('el',_('Spanish')),
+   ('id',_('Spanish')),
+   ('it',_('Spanish')),
+   ('nl',_('Spanish')),
+   ('pt',_('Spanish')),
+   ('ru',_('Spanish')),
+   ('th',_('Spanish')),
+   ('ar',_('Spanish')),
+   ('be',_('Spanish')),
+   ('bg',_('Spanish')),
+   ('bn',_('Spanish')),
+   ('et',_('Spanish')),
+   ('eu',_('Spanish')),
+   #('fil',_('Spanish')),
+   ('he',_('Spanish')),
+   ('hi',_('Spanish')),
+   ('hu',_('Spanish')),
+   ('ja',_('Spanish')),
+   ('lb',_('Spanish')),
+   ('sl',_('Spanish')),
+   ('sv',_('Spanish')),
+   ('tr',_('Spanish')),
+   ('vi',_('Spanish')),
 ]
 
 TIME_ZONE = 'UTC'
@@ -329,6 +378,7 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+
 
 
 # AWS Credentials
